@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Naponp</title>
+<style>
+body {
+background-color: lightblue;
+padding: 3px;
+}
+
+.a {
+    text-decoration: none;
+    color: white;
+    background-color: #2874F1;
+    border-radius: 10px;
+}
+</style>
+    <script>
+    function checkPassword() {
+        var password = document.getElementById("passwordBox");
+        var passwordText = password.value;
+        if(passwordText == "timosha123") {
+            return true;
+        }
+        alert("Неправильный Пароль!");
+        return false;
+    }
+    </script>
+</head>
+<body>
+            <span class="logo navLogo"><a href="index.html"><img src="Без имени-1.png" width="300"></a></span>
+    <p>Для входа в банк Введите пароль!</p>
+    Логин: timosha
+    <p>Пароль: <input id="passwordBox" type="password"/></p>
+    <a href="main.html" onclick="return checkPassword();" class="a">
+    <h2>Проверить
+</a>
+</body>
+</html>
+

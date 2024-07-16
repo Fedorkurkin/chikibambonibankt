@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Naponp</title>
+<style>
+body {
+background-color: lightblue;
+padding: 3px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+}
+</style>
+<script>
+let saveServing = document.getElementById("serving").value;
+let saveArray = document.getElementsByClassName("classname-for-all-list-elements-here");
+
+function changeServing() {
+  for (let i = 0; i < saveArray.length; i++) {
+    saveArray[i].innerHTML = saveArray[i].innerHTML/4 * saveServing;
+  }
+}
+
+const input  = document.querySelector('input');
+const button = document.querySelector('#button');
+
+button.addEventListener('click', function() {
+input.value = +input.value + 1;
+
+console.log(input.value);
+});
+</script>
+<span class="logo navLogo"><a href="main.html"><img src="Без имени-1.png" width="300"></a></span>
+<p><a href="perevod.html">Переводы </a>
+<a href="card.html"> Карта</a>
+<h1>Здраствуйте, Тимофей!👋
+</h1>
+<p><h3>Счета:
+<p> Рубли: 0 ₽
+<p> Доллары: 0 $
+<p> Евро: 0 € 
