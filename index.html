@@ -1,99 +1,161 @@
-Для создания такого сайта, мне потребуется несколько файлов, включая HTML, CSS и JavaScript. Однако, я могу предоставить вам основной HTML-код и описания для CSS и JavaScript, которые вам потребуется добавить отдельно.
-
-1. HTML-файл (index.html):
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кейсы</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
+    <title>Открытие кейсов</title>
+    <style>
+        /* Стили для сайта */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298); /* Градиент для фона */
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 50px;
+        }
+        .case {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .item {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #fff;
+            margin: 5px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Градиент для предметов */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            background: linear-gradient(to right, #43cea2, #185a9d); /* Градиент для кнопок */
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(to right, #185a9d, #43cea2); /* Градиент для кнопок при наведении */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Кейсы</h1>
-        <div class="cases">
-            <button id="bomberCaseBtn" onclick="showCase('bomberCase')">Кейс бомжа</button>
-            <button id="dailyCaseBtn" onclick="showCase('dailyCase')">Кейс ежедневный</button>
+        <h1>Открытие кейсов</h1>
+        <button onclick="showCase('bum')">Кейс Бомжа</button>
+        <button onclick="showCase('daily')">Ежедневный Кейс</button>
+
+        <div id="bum" class="case">
+            <h2>Кейс Бомжа</h2>
+            <button onclick="openCase('bum')">Открыть кейс</button>
+            <div id="bum-items"></div>
         </div>
-        <div class="case" id="caseContent">
-            <!-- Содержимое кейса здесь -->
+
+        <div id="daily" class="case">
+            <h2>Ежедневный Кейс</h2>
+            <button onclick="openCase('daily')">Открыть кейс</button>
+            <div id="daily-items"></div>
         </div>
     </div>
+
+    <script>
+        const items = {
+            bum: [
+                { name: 'ZAZ 968', chance: 3 },
+                { name: 'VAZ 2115', chance: 3 },
+                { name: 'Toyota Mark II {GOLD}', chance: 1 },
+                { name: 'Ford Mustang GT {GOLD}', chance: 1 },
+                { name: '2 EXP', chance: 10 },
+                { name: '4 EXP', chance: 10 },
+                { name: '8 EXP', chance: 10 },
+                { name: 'Авиаторы', chance: 5 },
+                { name: 'Кепка BlackRussia', chance: 5 },
+                { name: 'Сумка GUCCI', chance: 5 },
+                { name: 'До 100BC', chance: 5 },
+                { name: 'До 100.000р', chance: 5 },
+                { name: 'Gold VIP 5 дней', chance: 1 },
+                { name: 'Silver VIP 5 дней', chance: 1 },
+                { name: 'Platinum VIP 5 дней', chance: 1 },
+                { name: 'Все лицензии', chance: 1 },
+                { name: 'Любое оружие', chance: 5 },
+                { name: 'Канистра с бензином', chance: 5 },
+                { name: 'Мед Карта', chance: 1 },
+                { name: 'Ремонтный набор', chance: 5 },
+                { name: 'Военный билет', chance: 1 },
+                { name: 'До 75BC', chance: 5 },
+                { name: 'До 75.000р', chance: 5 },
+                { name: 'До 150.000р', chance: 5 },
+                { name: 'Audi A4', chance: 3 },
+                { name: 'Акустическая гитара', chance: 5 },
+                { name: 'Доска - СкейтБорд', chance: 5 }
+            ],
+            daily: [
+                { name: 'Volvo 242DL', chance: 3 },
+                { name: 'VAZ 2115', chance: 3 },
+                { name: 'Mercedes-Benz W124', chance: 3 },
+                { name: 'Audi A4', chance: 3 },
+                { name: 'BMW M3 E46', chance: 3 },
+                { name: 'Mercedes-Benz C63s AMG {GOLD}', chance: 1 },
+                { name: 'Volkswagen Jetta {GOLD}', chance: 1 },
+                { name: '4 EXP', chance: 10 },
+                { name: '8 EXP', chance: 10 },
+                { name: '16 EXP', chance: 10 },
+                { name: 'Кепка BlackRussia', chance: 5 },
+                { name: 'Рюкзак LV', chance: 5 },
+                { name: 'Сумка Supreme', chance: 5 },
+                { name: 'До 300BC', chance: 5 },
+                { name: 'До 300.000', chance: 5 },
+                { name: 'Любое оружие', chance: 5 },
+                { name: 'Silver VIP 5 дней', chance: 1 },
+                { name: 'Gold VIP 5 дней', chance: 1 },
+                { name: 'Platinum VIP 5 дней', chance: 1 },
+                { name: 'Все лицензии', chance: 1 },
+                { name: 'Мед Карта', chance: 1 },
+                { name: 'Военный билет', chance: 1 },
+                { name: 'Дополнительный слот на авто', chance: 5 },
+                { name: 'Любой номерной знак', chance: 5 },
+                { name: 'Toyota Mark II', chance: 3 },
+                { name: 'Сумка Supreme', chance: 5 },
+                { name: 'Доска-СкейтБорд', chance: 5 }
+            ]
+        };
+
+        function showCase(caseName) {
+            document.querySelectorAll('.case').forEach(c => c.classList.remove('active'));
+            document.getElementById(caseName).classList.add('active');
+        }
+
+        function openCase(caseName) {
+            const caseItems = items[caseName];
+            const totalChance = caseItems.reduce((sum, item) => sum + item.chance, 0);
+            const random = Math.random() * totalChance;
+            let cumulativeChance = 0;
+            let selectedItem = null;
+
+            for (const item of caseItems) {
+                cumulativeChance += item.chance;
+                if (random < cumulativeChance) {
+                    selectedItem = item;
+                    break;
+                }
+            }
+
+            const caseElement = document.getElementById(`${caseName}-items`);
+            caseElement.innerHTML = `<div class="item">${selectedItem.name}</div>`;
+        }
+    </script>
 </body>
 </html>
-```
-1. CSS-файл (styles.css):
-```css
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    color: #333;
-}
-
-.cases {
-    margin-bottom: 20px;
-}
-
-.case {
-    display: none;
-    margin-bottom: 20px;
-}
-
-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-```
-1. JavaScript-файл (scripts.js):
-```javascript
-function showCase(caseName) {
-    const caseContent = document.getElementById("caseContent");
-    caseContent.innerHTML = "";
-
-    if (caseName === "bomberCase") {
-        caseContent.innerHTML = `
-            <h2>Кейс бомжа</h2>
-            <ul>
-                <li>ZAZ 968</li>
-                <li>VAZ 2115</li>
-                <li>Toyota Mark II {GOLD}</li>
-                <li>Ford Mustang GT {GOLD}</li>
-                <li>2 EXP</li>
-                <li>4 EXP</li>
-                <li>8 EXP</li>
-                <li>Авиаторы</li>
-                <li>Кепка BlackRussia</li>
-                <li>Сумка GUCCI</li>
-                <li>До 100BC</li>
-                <li>До 100.000р</li>
-                <li>Gold VIP 5 дней</li>
-                <li>Silver VIP 5 дней</li>
-                <li>Platinum VIP 5 дней</li>
-                <li>Все лицензии</li>
-                <li>Любое оружие
 
