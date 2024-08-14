@@ -1,40 +1,99 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Naponp</title>
-<style>
-body {
-background-color: lightblue;
-padding: 3px;
-}
+Для создания такого сайта, мне потребуется несколько файлов, включая HTML, CSS и JavaScript. Однако, я могу предоставить вам основной HTML-код и описания для CSS и JavaScript, которые вам потребуется добавить отдельно.
 
-.a {
-    text-decoration: none;
-    color: white;
-    background-color: #2874F1;
-    border-radius: 10px;
-}
-</style>
-    <script>
-    function checkPassword() {
-        var password = document.getElementById("passwordBox");
-        var passwordText = password.value;
-        if(passwordText == "timosha123") {
-            return true;
-        }
-        alert("Неправильный Пароль!");
-        return false;
-    }
-    </script>
+1. HTML-файл (index.html):
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейсы</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
 </head>
 <body>
-            <span class="logo navLogo"><a href="index.html"><img src="Без имени-1.png" width="300"></a></span>
-    <p>Для входа в банк Введите пароль!</p>
-    Логин: timosha
-    <p>Пароль: <input id="passwordBox" type="password"/></p>
-    <a href="main.html" onclick="return checkPassword();" class="a">
-    <h2>Проверить
-</a>
+    <div class="container">
+        <h1>Кейсы</h1>
+        <div class="cases">
+            <button id="bomberCaseBtn" onclick="showCase('bomberCase')">Кейс бомжа</button>
+            <button id="dailyCaseBtn" onclick="showCase('dailyCase')">Кейс ежедневный</button>
+        </div>
+        <div class="case" id="caseContent">
+            <!-- Содержимое кейса здесь -->
+        </div>
+    </div>
 </body>
 </html>
+```
+1. CSS-файл (styles.css):
+```css
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+.cases {
+    margin-bottom: 20px;
+}
+
+.case {
+    display: none;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+```
+1. JavaScript-файл (scripts.js):
+```javascript
+function showCase(caseName) {
+    const caseContent = document.getElementById("caseContent");
+    caseContent.innerHTML = "";
+
+    if (caseName === "bomberCase") {
+        caseContent.innerHTML = `
+            <h2>Кейс бомжа</h2>
+            <ul>
+                <li>ZAZ 968</li>
+                <li>VAZ 2115</li>
+                <li>Toyota Mark II {GOLD}</li>
+                <li>Ford Mustang GT {GOLD}</li>
+                <li>2 EXP</li>
+                <li>4 EXP</li>
+                <li>8 EXP</li>
+                <li>Авиаторы</li>
+                <li>Кепка BlackRussia</li>
+                <li>Сумка GUCCI</li>
+                <li>До 100BC</li>
+                <li>До 100.000р</li>
+                <li>Gold VIP 5 дней</li>
+                <li>Silver VIP 5 дней</li>
+                <li>Platinum VIP 5 дней</li>
+                <li>Все лицензии</li>
+                <li>Любое оружие
 
